@@ -1,13 +1,18 @@
 import yfinance as yf
 
 # Define the ticker symbol
-ticker = "BTC-USD"
+ticker = 'BTC-USD'
 
-# Get data on this ticker
-btc_data = yf.download(ticker, start="2014-09-17", end="2024-01-01")
+# Download historical data
+bitcoin_data = yf.download(ticker, start='2018-02-01', end='2023-12-31')
 
-# Print the first few rows of the data
-print(btc_data.head())
+# Extract only the closing prices
+bitcoin_prices = bitcoin_data['Close']
+bitcoin_volume = bitcoin_data['Volume']
 
-# Save data to CSV file
-btc_data.to_csv('BTC_USD.csv')
+# Display the first few rows
+print(bitcoin_prices.head())
+
+# Save the closing prices to a CSV file
+bitcoin_prices.to_csv('bitcoin_price_history.csv', header=True)
+bitcoin_volume.to_csv('bitcoin_volume_history.csv', header=True)
