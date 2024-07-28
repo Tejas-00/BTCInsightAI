@@ -4,10 +4,10 @@ import yfinance as yf
 ticker = 'BTC-USD'
 
 # Download historical data
-bitcoin_data = yf.download(ticker, start='2018-02-01', end='2023-12-31')
+bitcoin_data = yf.download(ticker, start='2018-02-01', end='2024-07-23')
 
 # Extract only the closing prices
-bitcoin_prices = bitcoin_data['Close']
+bitcoin_prices = bitcoin_data[['Open', 'Close']]
 bitcoin_volume = bitcoin_data['Volume']
 
 # Display the first few rows
